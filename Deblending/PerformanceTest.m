@@ -70,7 +70,7 @@ end
 %% 5 Loop over different blending patterns and shooting windows
 
 for pattern = 1:3
-    
+  
     % Choose a folder based on the pattern
     if pattern == 1
         folder = '3Time';
