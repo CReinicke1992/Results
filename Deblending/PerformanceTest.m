@@ -53,6 +53,12 @@ time_matrix = zeros(size(quality_matrix));
 
 %% 4 Loop over different blending patterns and shooting windows
 
+% Create random number series for the time delays
+random_times = zeros(Ne,b-1);
+for exp = 1:Ne
+    random_times(exp,:) = rand(b-1,1);
+end
+
 for pattern = 1:3
     
     % Choose a folder based on the pattern

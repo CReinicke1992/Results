@@ -61,7 +61,7 @@ end
 if pattern == 1
     
     for exp = 1:Ne
-        g( 1+(exp-1)*b : exp*b,exp ) = [1 ; t_g * sort( rand(b-1,1) ) ];
+        g( 1+(exp-1)*b : exp*b,exp ) = [1 ; t_g * sort( random_times(exp,:) ) ];
     end
     
 % Pattern 2: b randomly picked sources within a crossline are blended with random time delays    
