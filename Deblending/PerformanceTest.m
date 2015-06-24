@@ -28,7 +28,6 @@ total = tic;
 %% 1 Make functions available
 
 addpath('Functions/');
-addpath('Incoherency-Functions/');
 
 %% 2 Load and set general parameters
 
@@ -47,7 +46,7 @@ Ne = round(Ns/b);
 
 %% 3 Create a matrix for quality factors, incoherency and computation time
 
-quality_matrix = zeros(3,10); % Number of row: Number of pattern
+quality_matrix = zeros(3,19); % Number of row: Number of pattern
                              % Number of columns: Number of shooting
                              % windows                           
 time_matrix = zeros(size(quality_matrix));
@@ -81,7 +80,7 @@ for pattern = 1:3
     end
     
     
-    for t_g = 100:-10:10 % If the computation does not fail for t_g = 70,
+    for t_g = 100:-5:10 % If the computation does not fail for t_g = 70,
                                % then it will work for all smaller t_g
         
         % Display the iteration number               
@@ -125,8 +124,8 @@ for pattern = 1:3
         
         fclose(fid);
         
-        quality_matrix(pattern,t_g/10)     = Q;
-        time_matrix(pattern,t_g/10)        = time_deblending;
+        quality_matrix(pattern,t_g/5)     = Q;
+        time_matrix(pattern,t_g/5)        = time_deblending;
         clear fid
         
     end
