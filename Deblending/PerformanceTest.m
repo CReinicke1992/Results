@@ -128,7 +128,7 @@ for pattern = 1:3
         quality_matrix(pattern,t_g/10)     = Q;
         time_matrix(pattern,t_g/10)        = time_deblending;
         clear fid
-        %
+        
     end
 end
 
