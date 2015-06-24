@@ -49,20 +49,12 @@ if nargin < 5
     pattern = 1;
 end
 
-% Pattern 0: b ajacent sources are blended with random time delays in
+% Pattern 1: b ajacent sources are blended with random time delays in
 % order, eg from the left to the right
-if pattern == 0
+if pattern == 1
     
     for exp = 1:Ne
         g( 1+(exp-1)*b : exp*b,exp ) = [1 ; t_g * sort( rand(b-1,1) ) ];
-    end
-    
-% Pattern 1: b adjacent sources are blended with random time delays in
-% random order
-elseif pattern == 1
-    
-    for exp = 1:Ne
-        g( 1+(exp-1)*b : exp*b,exp ) = [1 ; t_g*rand(b-1,1) ];
     end
     
 % Pattern 2: b randomly picked sources within a crossline are blended with random time delays    
@@ -90,37 +82,6 @@ elseif pattern == 3
         ind = (in-1)*Nsx + randperm(Nsx);
         g(1+(in-1)*Nsx : in*Nsx ,:) = g(ind,:);
     end
-    
-% Pattern 4: b adjacent sources are blended with no time delay in
-% order, eg from the left to the right
-elseif pattern == 4
-    
-    for exp = 1:Ne
-        g( 1+(exp-1)*b : exp*b,exp ) = ones(b,1);
-    end
-   
-% Pattern 5: b randomly picked sources are blended with random time delays
-elseif pattern == 5
-    
-    for exp = 1:Ne
-        g( 1+(exp-1)*b : exp*b,exp ) = [1 ; t_g*rand(b-1,1) ];
-    end
-    
-    % Randomly shuffle the sources within a crossline
-    ind = randperm(Ns);
-    g(ind,:) = g;
-    
-
-% Pattern 6: b randomly picked sources are blended with no time delay
-elseif pattern == 6
-    
-    for exp = 1:Ne
-        g( 1+(exp-1)*b : exp*b,exp ) = ones(b,1);
-    end
-    
-    % Randomly shuffle the sources
-    ind = randperm(Ns);
-    g(ind ,:) = g;
 end
 
 % Make sure that g contains only integers.
