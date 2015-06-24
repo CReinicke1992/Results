@@ -51,7 +51,7 @@ quality_matrix = zeros(3,10); % Number of row: Number of pattern
                              % windows                           
 time_matrix = zeros(size(quality_matrix));
 
-%% 4 Loop over different blending patterns and shooting windows
+%% 4 Create random number series for the delay times and blending patterns
 
 % Create random number series for the time delays
 random_times = zeros(Ne,b-1);
@@ -65,6 +65,8 @@ for in = 1:Nsi
     ind = (in-1)*Nsx + randperm(Nsx);
     random_sources(in,:) = ind;
 end
+
+%% 5 Loop over different blending patterns and shooting windows
 
 for pattern = 1:3
     
