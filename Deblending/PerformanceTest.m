@@ -59,6 +59,13 @@ for exp = 1:Ne
     random_times(exp,:) = rand(b-1,1);
 end
 
+% Randomly pick sources from a crossline
+random_sources = zeros(Nsi,Nsx);
+for in = 1:Nsi
+    ind = (in-1)*Nsx + randperm(Nsx);
+    random_sources(in,:) = ind;
+end
+
 for pattern = 1:3
     
     % Choose a folder based on the pattern

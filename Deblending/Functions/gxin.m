@@ -11,7 +11,9 @@
 % * b     Number of blended sources per experiment
 % * random_times    Random number series which is used to compute the
 %                   random time delays (b-1 elements, uniformly distributed 
-%                   between 0 and 1)
+%                   between 0 and 1). Random times is a matrix Ne x (b-1),
+%                   because each experiment must have different random
+%                   numbers.
 % * random_sources  Permutation series to select the random sources for
 %                   the experiments. The series 1:Ns should be separated in
 %                   sub-series of length Nsx. Each of these sub-series
@@ -68,7 +70,7 @@ elseif pattern == 2
     
     % Randomly shuffle the sources within a crossline
     for in = 1:Nsi
-        ind = (in-1)*Nsx + randperm(Nsx);
+        ind = random_sources(in,:);
         g(1+(in-1)*Nsx : in*Nsx ,:) = g(ind,:);
     end
     
@@ -81,7 +83,7 @@ elseif pattern == 3
     
     % Randomly shuffle the sources within a crossline
     for in = 1:Nsi
-        ind = (in-1)*Nsx + randperm(Nsx);
+        ind = random_sources(in,:);
         g(1+(in-1)*Nsx : in*Nsx ,:) = g(ind,:);
     end
 end
