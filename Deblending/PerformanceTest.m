@@ -89,16 +89,6 @@ for pattern = 1:3
         blend_deblend(g,path_for_blend_deblend); 
         time_deblending = toc(bl);
         
-        g4 = g2dto4d(g,t_g); clear g
-        
-        % Compute incoherency. Measue the comutation time
-        inco = tic;
-        [in,auto] = incoherency4d(g4); 
-        time_incoherency = toc(inco); clear g4
-        save( strcat(path,'Auto-correlation/Autocorrelation4d.mat') , 'auto' );
-        save( strcat(path,'Auto-correlation/incoherency.mat') , 'in' ); 
-        clear auto
-        
         % Load quality factor
         fileID = strcat(path,'QualityFactor.mat');
         Quality = load(fileID);clear fileID
