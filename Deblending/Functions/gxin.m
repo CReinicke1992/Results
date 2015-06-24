@@ -9,6 +9,13 @@
 % * Ns    Total number of sources (crossline + inline)
 % * Nsx   Number of crossline sources
 % * b     Number of blended sources per experiment
+% * random_times    Random number series which is used to compute the
+%                   random time delays (b-1 elements, uniformly distributed 
+%                   between 0 and 1)
+% * random_sources  Permutation series to select the random sources for
+%                   the experiments. The series 1:Ns should be separated in
+%                   sub-series of length Nsx. Each of these sub-series
+%                   (crosslines) is randomly permuted.
 
 
 % OUTPUT
@@ -17,7 +24,7 @@
 %       -> The elements of g are integers
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
-function g = gxin(t_g,Ns,Nsx,b,pattern)
+function g = gxin(t_g,Ns,Nsx,b,pattern,random_times,random_sources)
 
 % This check used to be in the deblending function. I am not sure why t_g
 % is supposed to be en even number. To avoid stupid errors I just copied
