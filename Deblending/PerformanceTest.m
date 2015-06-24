@@ -82,6 +82,12 @@ for pattern = 1:3
     
     for t_g = 100:-5:10 % If the computation does not fail for t_g = 70,
                                % then it will work for all smaller t_g
+                               
+        % tg is supposed to be an even number. Thus I insert this stupid
+        % modification
+        if mod(t_g,2) ~= 0;
+            t_g = t_g+1;
+        end
         
         % Display the iteration number               
         disp([' Pattern: (',num2str(pattern), '/3), (',folder,')']);
