@@ -51,11 +51,6 @@ if mod(Nsx,b) ~= 0
    error(message);
 end
 
-% Set default blending pattern
-if nargin < 5
-    pattern = 1;
-end
-
 % Pattern 1: b ajacent sources are blended with random time delays in
 % order, eg from the left to the right
 if pattern == 1
@@ -68,7 +63,7 @@ if pattern == 1
 elseif pattern == 2
     
     for exp = 1:Ne
-        g( 1+(exp-1)*b : exp*b,exp ) = [1 ; t_g*rand(b-1,1) ];
+        g( 1+(exp-1)*b : exp*b,exp ) = [1 ; t_g*random_times(exp,:) ];
     end
     
     % Randomly shuffle the sources within a crossline

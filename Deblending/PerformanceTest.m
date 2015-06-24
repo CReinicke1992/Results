@@ -87,7 +87,7 @@ for pattern = 1:3
         path = strcat('Data',path_for_blend_deblend);
         
         % Create a 2d blending matrix
-        g = gxin(t_g,Ns,Nsx,b,pattern);
+        g = gxin(t_g,Ns,Nsx,b,pattern,random_times,random_sources);
         save(strcat(path,'blending_matrix.mat'),'g')
         
         % Blend & deblend the data. Measure the computation time.
