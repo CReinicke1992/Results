@@ -49,7 +49,6 @@ clear Parameters_red
 quality_matrix = zeros(3,10); % Number of row: Number of pattern
                              % Number of columns: Number of shooting
                              % windows                           
-incoherency_matrix = zeros(size(quality_matrix));
 time_matrix = zeros(size(quality_matrix));
 
 %% 4 Loop over different blending patterns and shooting windows
