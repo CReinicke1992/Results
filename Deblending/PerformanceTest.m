@@ -65,7 +65,7 @@ for pattern = 1:3
     end
     
     
-    for t_g = [100:-10:10] % If the computation does not fail for t_g = 70,
+    for t_g = 100:-10:10 % If the computation does not fail for t_g = 70,
                                % then it will work for all smaller t_g
         
         % Display the iteration number               
@@ -107,14 +107,10 @@ for pattern = 1:3
         fprintf(fid,'Deblending quality: \t\t%f \n',Q);
         fprintf(fid,'Computing time (seconds): \t%f \n\n',time_deblending);
         
-        fprintf(fid,'Incoherency: \t\t %f \n',in);
-        fprintf(fid,'Computing time (seconds): \t%f \n',time_incoherency);
-        
         fclose(fid);
         
         quality_matrix(pattern+1,t_g/10+1)     = Q;
-        incoherency_matrix(pattern+1,t_g/10+1) = in;
-        time_matrix(pattern+1,t_g/10+1)        = time_incoherency + time_deblending;
+        time_matrix(pattern+1,t_g/10+1)        = time_deblending;
         clear in fid
         
     end
