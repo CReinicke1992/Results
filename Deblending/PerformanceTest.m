@@ -43,6 +43,7 @@ Nsi  = Parameters_red.Nsi;   % Number of inline sources
 Ns   = Parameters_red.Ns;    % Number of sources
 b    = 7;                    % Blending factor for a 21 x 51 source grid
 clear Parameters_red
+Ne = round(Ns/b);
 
 %% 3 Create a matrix for quality factors, incoherency and computation time
 
