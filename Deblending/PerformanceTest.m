@@ -122,5 +122,4 @@ save('Data/Total_Elapsed_Time','total_time')
 
 % Save measured parameters
 save('Data/ParameterTest/quality','quality_matrix')
-save('Data/ParameterTest/incoherency','incoherency_matrix')
 save('Data/ParameterTest/time','time_matrix')
