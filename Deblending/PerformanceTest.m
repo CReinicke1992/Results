@@ -130,8 +130,8 @@ for pattern = 1:3
         
         fclose(fid);
         
-        quality_matrix(pattern,t_g/5)     = Q;
-        time_matrix(pattern,t_g/5)        = time_deblending;
+        quality_matrix(pattern,floor(t_g/5))     = Q;
+        time_matrix(pattern,floor(t_g/5))        = time_deblending;
         clear fid
         
     end
