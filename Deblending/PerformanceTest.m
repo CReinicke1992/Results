@@ -13,7 +13,8 @@
 % 2 Load parameters from a parameter file which belongs to the Synthetic
 %   Data
 % 3 Create a matrix for quality factors, incoherency and computation time
-% 4 Iterate over blending patterns and shooting windows
+% Create random number series for the pattern and the time delay
+% 5 Iterate over blending patterns and shooting windows
 %       -> Blend and deblend the data
 %       -> Compute the incoherency of the blending pattern
 %       -> Create separate folders for each iteration and save the results
