@@ -33,30 +33,28 @@ clear Parameters_red
 
 %% 2 Iterate over patterns and shooting windows to create all the plots
 
-for pattern = 0:6
+for pattern = 1:3
     
     % Choose a folder based on the pattern
-    if pattern == 0
+    if pattern == 1
         folder = '3Time';
-    elseif pattern == 1
-        folder = '4Space-Time-Experiment';
     elseif pattern == 2
         folder = '5Space-Time-Crossline';
     elseif pattern == 3
         folder = '2Space-Crossline';
-    elseif pattern == 4
-        folder = '1None';
-    elseif pattern == 5
-        folder = '6Space-Time-Fully';
-    elseif pattern == 6
-        folder = '7Space';
     end
     
     % Set path to the subfolder
     parent_data = strcat('Data/',folder,'/');
     parent_plot = strcat('Plots/',folder,'/');
     
-     for t_g = [100,70:-10:10]
+     for t_g = 100:-5:10
+         
+         % As tg is supposed to be an even number, I inserted this stupid
+         % modification
+         if mod(t_g,2) ~= 0;
+             t_g = t_g+1;
+         end
          
          % Create pathes to the data and to the location where the plot
          % should be saved
