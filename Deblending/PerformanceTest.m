@@ -75,7 +75,7 @@ for in = 1:Nsi
     ind = (in-1)*Nsx + randperm(Nsx);
     random_sources(in,:) = ind;
 end
-space_rand_series(:,:,ran) ? random_sources;
+space_rand_series(:,:,ran) = random_sources;
 
 %% 5 Loop over different blending patterns and shooting windows
 
