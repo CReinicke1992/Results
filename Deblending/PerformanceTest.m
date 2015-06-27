@@ -58,6 +58,8 @@ time_matrix = zeros(size(quality_matrix));
 
 %% 4 Create random number series for the delay times and blending patterns
 
+time_rand_series = zeros(Ne,b-1,Nrand);
+space_rand_series = zeros(Nsi,Nsx,Nrand);
 for ran = 1:Nrand
 
 % Create random number series for the time delays
@@ -65,6 +67,7 @@ random_times = zeros(Ne,b-1);
 for exp = 1:Ne
     random_times(exp,:) = rand(b-1,1);
 end
+time_rand_series(:,:,ran) = random_times;
 
 % Randomly pick sources from a crossline
 random_sources = zeros(Nsi,Nsx);
@@ -72,6 +75,7 @@ for in = 1:Nsi
     ind = (in-1)*Nsx + randperm(Nsx);
     random_sources(in,:) = ind;
 end
+space_rand_series(:,:,ran) ? random_sources;
 
 %% 5 Loop over different blending patterns and shooting windows
 
@@ -160,3 +164,7 @@ save('Data/Total_Elapsed_Time','total_time')
 save('Data/ParameterTest/quality','quality_matrix')
 save('Data/ParameterTest/incoherency','incoherency_matrix')
 save('Data/ParameterTest/time','time_matrix')
+
+% Save random series
+save('Data/ParameterTest/time_rand_series','time_rand_series')
+save('Data/ParameterTest/space_rand_series','space_rand_series')
