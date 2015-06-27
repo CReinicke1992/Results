@@ -65,7 +65,7 @@ data5d = trans_5D_3D(data,Nri,Nsi);
 %% Reduce data size
 
 % Reduce number of time samples and inline sources
-Nt = 301;  Nsx = 51; Nsi = 51;  %Nsx = 21; Nsi = 51;
+Nt = 301;  Nsx = 21; Nsi = 51;  %Nsx = 21; Nsi = 51;
 
 %dx = 25;    di = 25;
 
@@ -97,8 +97,8 @@ Parameters_red = load(fileID); clear fileID
 % Define a range of the crossline sources which should be extracted
 % One could also choose crosslines 1:Nsx_red but then the data will be less
 % symmetric
-left  = ceil(  0.5 * ( size(data5d,4) - Parameters_red.Nsx )  ); 
-right = left + Nsx - 1;
+%left  = ceil(  0.5 * ( size(data5d,4) - Parameters_red.Nsx )  ); 
+%right = left + Nsx - 1;
 
 % For /Users/christianreinicke/Dropbox/MasterSemester/SyntheticData/V3
 %left  = ceil(  0.5 * ( size(data5d,4) - 2*Parameters_red.Nsx )  ); 
@@ -107,6 +107,10 @@ right = left + Nsx - 1;
 % For /Users/christianreinicke/Dropbox/MasterSemester/SyntheticData/V4
 %left  = ceil(  0.5 * size(data5d,4) ); 
 %right = left + Nsx - 1;
+
+% For V5?
+left  = ceil(  0.5 * size(data5d,4)); %- Parameters_red.Nsx  ); 
+right = left + Nsx - 1;
 
 
 data5d_red = data5d(1:Parameters_red.Nt,:,:,left:1:right,1:1:Parameters_red.Nsi); clear data5d
@@ -124,5 +128,5 @@ xlabel('Source number','fontweight','bold');
 ylabel('Time (4ms/sample)','fontweight','bold');
 set(gca,'FontSize',14);
 title('Data in Delphi format (reduced size)');
-savefig('Plots/Data_red_Delphi_Format');
+%savefig('Plots/Data_red_Delphi_Format');
 
