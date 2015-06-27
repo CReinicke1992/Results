@@ -9,13 +9,12 @@
 addpath('Functions/');
 
 %% Load data & Parameters
-cd ..
-fileID = 'ComplexData4Chris_data.mat';
+fileID = '../../ComplexData4Chris_data.mat';
 SavedData = load(fileID); clear fileID
 
-fileID = 'Parameters.mat';
+fileID = '../../Parameters.mat';
 Parameters = load(fileID); clear fileID
-cd Deblending
+
 
 p = SavedData.p;
 
@@ -66,17 +65,17 @@ data5d = trans_5D_3D(data,Nri,Nsi);
 %% Reduce data size
 
 % Reduce number of time samples and inline sources
-Nt = 1001;  Nsx = 51; Nsi = 51;  %Nsx = 21; Nsi = 51;
+Nt = 301;  Nsx = 51; Nsi = 51;  %Nsx = 21; Nsi = 51;
 
 %dx = 25;    di = 25;
 
 % Write a new parameter file with updated values
-cd ..
+
 % Copy the file Parameters.mat
-copyfile('Parameters.mat','Parameters_red.mat');
+copyfile('../../Parameters.mat','../Parameters_red.mat');
 
 % Update the parameters in the copy Parameters_red.mat
-fileID = 'Parameters_red';
+fileID = '../Parameters_red';
 m = matfile(fileID,'Writable',true);
 m.Nt  = Nt;
 m.Nsx = Nsx;
@@ -89,10 +88,9 @@ m.dki = 1/Parameters.di/Nsi;     % Size of an inline wavenumber sample,     1/di
 %m.dx = dx;
 %m.di = di;
 
-fileID = 'Parameters_red.mat';
+fileID = '../Parameters_red.mat';
 Parameters_red = load(fileID); clear fileID
 
-cd Deblending/
 
 %% Save data with reduced size
 
