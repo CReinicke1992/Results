@@ -2,7 +2,7 @@
 % Blend Deblend the data
 % Compute incoherency
 % Save data
-% Write a result fle with all the relevant numbers in it
+% Write a result file with all the relevant numbers in it
 % Use a separate function to read and plot the data
 
 % Duration of one wavelet: 60ms (Thus shooting windows of at least about 120ms should be tested)
@@ -38,6 +38,7 @@ fileID = '../Parameters_red.mat';
 Parameters_red = load(fileID); clear fileID
 
 dt   = Parameters_red.dt;   % Duration of a time sample
+Nt  = Parameters_red.Nt;   % Number of time samples
 Nsx  = Parameters_red.Nsx;   % Number of crossline sources
 Nsi  = Parameters_red.Nsi;   % Number of inline sources
 Ns   = Parameters_red.Ns;    % Number of sources
@@ -49,7 +50,8 @@ Ne = round(Ns/b);
 
 quality_matrix = zeros(3,19); % Number of row: Number of pattern
                              % Number of columns: Number of shooting
-                             % windows                           
+                             % windows   
+incoherency_matrix = zeros(size(quality_matrix));
 time_matrix = zeros(size(quality_matrix));
 
 %% 4 Create random number series for the delay times and blending patterns
@@ -111,6 +113,10 @@ for pattern = 1:3
         blend_deblend(g,path_for_blend_deblend); 
         time_deblending = toc(bl);
         
+        inco = tic;
+        in = incoherency_dia(g,Nt);
+        time_incoherency = toc(inco);
+        
         % Load quality factor
         fileID = strcat(path,'QualityFactor.mat');
         Quality = load(fileID);clear fileID
@@ -129,10 +135,14 @@ for pattern = 1:3
         fprintf(fid,'Deblending quality: \t\t%f \n',Q);
         fprintf(fid,'Computing time (seconds): \t%f \n\n',time_deblending);
         
+        fprintf(fid,'Incoherency: \t\t %f \n',in);
+-       fprintf(fid,'Computing time (seconds): \t%f \n',time_incoherency);
+        
         fclose(fid);
         
         quality_matrix(pattern,floor(t_g/5))     = Q;
-        time_matrix(pattern,floor(t_g/5))        = time_deblending;
+        incoherency_matrix(pattern,floor(t_g/5))     = in;
+        time_matrix(pattern,floor(t_g/5))        = time_deblending + time_incoherency;
         clear fid
         
     end
@@ -144,4 +154,5 @@ save('Data/Total_Elapsed_Time','total_time')
 
 % Save measured parameters
 save('Data/ParameterTest/quality','quality_matrix')
+save('Data/ParameterTest/incoherency','incoherency_matrix')
 save('Data/ParameterTest/time','time_matrix')
