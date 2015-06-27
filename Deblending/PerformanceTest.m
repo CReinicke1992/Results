@@ -48,9 +48,8 @@ Ne = round(Ns/b);
 
 %% 3 Create a matrix for quality factors, incoherency and computation time
 
-quality_matrix = zeros(3,19); % Number of row: Number of pattern
-                             % Number of columns: Number of shooting
-                             % windows   
+quality_matrix = zeros(3,10); % Number of row: Number of pattern
+                              % Number of columns: Number of shooting windows   
 incoherency_matrix = zeros(size(quality_matrix));
 time_matrix = zeros(size(quality_matrix));
 
