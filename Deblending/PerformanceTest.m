@@ -38,7 +38,7 @@ fileID = '../Parameters_red.mat';
 Parameters_red = load(fileID); clear fileID
 
 dt   = Parameters_red.dt;   % Duration of a time sample
-Nt  = Parameters_red.Nt;   % Number of time samples
+Nt   = Parameters_red.Nt;   % Number of time samples
 Nsx  = Parameters_red.Nsx;   % Number of crossline sources
 Nsi  = Parameters_red.Nsi;   % Number of inline sources
 Ns   = Parameters_red.Ns;    % Number of sources
@@ -83,7 +83,7 @@ for pattern = 1:3
     end
     
     
-    for t_g = 100:-5:10 % If the computation does not fail for t_g = 70,
+    for t_g = 100:-10:10 % If the computation does not fail for t_g = 70,
                                % then it will work for all smaller t_g
                                
         % tg is supposed to be an even number. Thus I insert this stupid
@@ -141,7 +141,7 @@ for pattern = 1:3
         fclose(fid);
         
         quality_matrix(pattern,floor(t_g/5))     = Q;
-        incoherency_matrix(pattern,floor(t_g/5))     = in;
+        incoherency_matrix(pattern,floor(t_g/5)) = in;
         time_matrix(pattern,floor(t_g/5))        = time_deblending + time_incoherency;
         clear fid
         
