@@ -1,7 +1,7 @@
 close all
 
 % The iteration over random numbers was stopped after ran iterations
-ran = 48;
+ran = 39;
 
 %% Quality Factor 
 
@@ -11,7 +11,7 @@ Q = mydata.quality_matrix;
 
 % figure(1); imagesc(squeeze( Q(:,2:2:end,48) ));
 
-Q = Q(:,2:2:end,1:ran);
+Q = Q(:,2:end,1:ran);
 Q_avg = mean(Q,3);
 
 % figure(2); imagesc(Q_avg);
@@ -59,7 +59,7 @@ I = mydata.incoherency_matrix;
 
 % figure(5); imagesc(squeeze( I(:,2:2:end,48) ));
 
-I = I(:,2:2:end,1:ran);
+I = I(:,2:end,1:ran);
 I_avg = mean(I,3);
 
 % figure(6); imagesc(I_avg);
@@ -97,4 +97,13 @@ set(gcf,'Position',[10 10 500 300]);
 %set(gca,'fontweight','bold');
 myleg = legend([p3 p1 p2],'Random sources','Random time delays','Random time delays & random sources','Location','NorthWest');%,'xt Crossline - t');
 set(myleg,'FontSize',10);
+
+%%
+
+QvsI = [I_avg(1,:);Q_avg(1,:)];
+
+figure(10); p1 = plot(I_avg(1,:),Q_avg(1,:)); hold on
+p2 = plot(I_avg(2,:),Q_avg(2,:)); hold on
+p3 = plot(I_avg(3,:),Q_avg(3,:),'k+');
+myleg = legend([p3 p1 p2],'Random sources','Random time delays','Random time delays & random sources','Location','NorthWest');%,'xt Crossline - t');
 
