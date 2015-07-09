@@ -47,7 +47,7 @@ clear Parameters_red
 Ne = round(Ns/b);
 
 % Number of random iterations
-Nrand = 100;
+Nrand = 39;
 
 %% 3 Create a matrix for quality factors, incoherency and computation time
 
