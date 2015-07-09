@@ -55,7 +55,7 @@ tune = 0.15;            % The minimum velocity in the data appears to be
                         % 1700 and 2700 m/s depending on inline/crossline. 
                         % Thus, I use 1500m/s as minimum velocity which is
                         % set by the water velocity.
-dim = 3;                % A 3d mask should be build
+dim = 2;                % A 3d mask should be build
 
 mask = fkmask5d(data,dt,dx,di,fcut,dim,tune,Nri,Nsi,flow);
 save('Data/FK/fkmask_red.mat','mask');
